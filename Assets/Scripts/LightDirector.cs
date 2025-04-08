@@ -18,6 +18,6 @@ public class LightDirector : MonoBehaviour
     void Update()
     {
         sunPosition = director.GetSunPosition();
-        transform.rotation = Quaternion.Euler(sunPosition.Item1, sunPosition.Item2 + 90, 0);
+        transform.rotation = Quaternion.Euler(sunPosition.Item1, sunPosition.Item2 + 180, 0);
     }
 }
