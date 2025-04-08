@@ -17,7 +17,6 @@ public class CustomFirstPersonController : MonoBehaviour
 	public float RotationSpeed = 1.0f;
 	[Tooltip("Acceleration and deceleration")]
 	public float SpeedChangeRate = 10.0f;
-
 	[Space(10)]
 	[Tooltip("Time required to pass before being able to jump again. Set to 0f to instantly jump again")]
 	public float JumpTimeout = 0.1f;
@@ -151,52 +150,6 @@ public class CustomFirstPersonController : MonoBehaviour
 		Vector3 flySpeed = new Vector3(0.0f, 1, 0.0f) * _input.fly * FlySpeed;
 		_controller.Move(flySpeed * Time.deltaTime);
 	}
-	// {
-	// 	if (Grounded)
-	// 	{
-	// 		// reset the fall timeout timer
-	// 		_fallTimeoutDelta = FallTimeout;
-
-	// 		// stop our velocity dropping infinitely when grounded
-	// 		if (_verticalVelocity < 0.0f)
-	// 		{
-	// 			_verticalVelocity = -2f;
-	// 		}
-
-	// 		// Jump
-	// 		if (_input.fly && _jumpTimeoutDelta <= 0.0f)
-	// 		{
-	// 			// the square root of H * -2 * G = how much velocity needed to reach desired height
-	// 			_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
-	// 		}
-
-	// 		// jump timeout
-	// 		if (_jumpTimeoutDelta >= 0.0f)
-	// 		{
-	// 			_jumpTimeoutDelta -= Time.deltaTime;
-	// 		}
-	// 	}
-	// 	else
-	// 	{
-	// 		// reset the jump timeout timer
-	// 		_jumpTimeoutDelta = JumpTimeout;
-
-	// 		// fall timeout
-	// 		if (_fallTimeoutDelta >= 0.0f)
-	// 		{
-	// 			_fallTimeoutDelta -= Time.deltaTime;
-	// 		}
-
-	// 		// if we are not grounded, do not jump
-	// 		_input.jump = false;
-	// 	}
-
-	// 	// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
-	// 	if (_verticalVelocity < _terminalVelocity)
-	// 	{
-	// 		_verticalVelocity += Gravity * Time.deltaTime;
-	// 	}
-	// }
 
 	private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
 	{

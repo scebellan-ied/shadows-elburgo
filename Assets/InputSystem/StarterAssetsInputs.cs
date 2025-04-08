@@ -5,6 +5,10 @@ using UnityEngine.InputSystem;
 
 public class CustomInputs : MonoBehaviour
 {
+	[Tooltip("The scene director")]
+	[SerializeField]
+	private SceneDirector sceneDirector;
+
 	[Header("Character Input Values")]
 	public Vector2 move;
 	public Vector2 look;
@@ -41,6 +45,16 @@ public class CustomInputs : MonoBehaviour
 	{
 		SlowDownInput(value.isPressed);
 	}
+
+	public void OnAdvanceScenario(InputValue value)
+	{
+		AdvanceScenarioInput(value.isPressed);
+	}
+
+	public void OnBacktrackScenario(InputValue value)
+	{
+		BacktrackScenarioInput(value.isPressed);
+	}
 #endif
 
 
@@ -62,6 +76,16 @@ public class CustomInputs : MonoBehaviour
 	public void SlowDownInput(bool newSlowdownState)
 	{
 		slowdown = !slowdown;
+	}
+
+	public void AdvanceScenarioInput(bool newAdvanceScenarioState)
+	{
+		sceneDirector.Next();
+	}
+
+	public void BacktrackScenarioInput(bool newBacktrackScenarioState)
+	{
+		sceneDirector.Previous();
 	}
 	
 	private void OnApplicationFocus(bool hasFocus)
