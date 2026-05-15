@@ -55,6 +55,11 @@ public class CustomInputs : MonoBehaviour
 	{
 		BacktrackScenarioInput(value.isPressed);
 	}
+
+	public void OnNrelActivate(InputValue value)
+	{
+		NrelActivateInput(value.isPressed);
+	}
 #endif
 
 
@@ -86,6 +91,12 @@ public class CustomInputs : MonoBehaviour
 	public void BacktrackScenarioInput(bool newBacktrackScenarioState)
 	{
 		sceneDirector.Previous();
+	}
+
+	public void NrelActivateInput(bool newNrelState)
+	{
+		sceneDirector.nrel = !sceneDirector.nrel;
+		Debug.Log("NREL activated: " + sceneDirector.nrel);
 	}
 	
 	private void OnApplicationFocus(bool hasFocus)

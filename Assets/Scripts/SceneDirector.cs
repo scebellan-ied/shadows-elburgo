@@ -6,18 +6,20 @@ public class SceneDirector : MonoBehaviour
 {
     [SerializeField]
     private string filePath = Application.dataPath + "/positions.csv";
-    private List<(string, (float, float), float[])> angles;
-    private int index = 7;
+    public bool nrel = false;
+    private List<(string, (float, float), float, float[])> angles;
+    private int index = 0;
     private int maxIndex = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        angles = new List<(string, (float, float), float[])>();
+        angles = new List<(string, (float, float), float, float[])>();
 
         string[] csvLines = System.IO.File.ReadAllLines(filePath);
         string[] splitline;
         string key;
         (float, float) sunPosition;
+        float nrel;
 
         foreach (string line in csvLines)
         {
@@ -25,19 +27,20 @@ public class SceneDirector : MonoBehaviour
             key = splitline[0];
             sunPosition = (float.Parse(splitline[1], NumberStyles.Float, CultureInfo.InvariantCulture), 
                 float.Parse(splitline[2], NumberStyles.Float, CultureInfo.InvariantCulture));
-            float[] values = new float[splitline.Length - 1];
-            for (int i = 3; i < splitline.Length; i++)
+            nrel = float.Parse(splitline[3], NumberStyles.Float, CultureInfo.InvariantCulture);
+            float[] values = new float[splitline.Length - 4];
+            for (int i = 4; i < splitline.Length; i++)
             {
                 if (float.TryParse(splitline[i], NumberStyles.Float, CultureInfo.InvariantCulture, out float value))
                 {
-                    values[i - 3] = value;
+                    values[i - 4] = value;
                 }
                 else
                 {
                     Debug.LogError($"Failed to parse value '{splitline[i]}' as float.");
                 }
             }
-            angles.Add((key, sunPosition, values));
+            angles.Add((key, sunPosition, nrel, values));
         }
         maxIndex = angles.Count - 1;
     }
@@ -68,9 +71,14 @@ public class SceneDirector : MonoBehaviour
         }
     }
 
+
+
     public float GetAngle(int i)
     {
-        return angles[index].Item3[i];
+        if (nrel){
+            return angles[index].Item3;
+        }
+        return angles[index].Item4[i];
     }
 
     /// <summary>
@@ -84,6 +92,11 @@ public class SceneDirector : MonoBehaviour
 
     public string GetKey()
     {
-        return angles[index].Item1;
+        string suffix = "";
+        if (nrel)
+        {
+            suffix = " - NREL";
+        }
+        return angles[index].Item1 + suffix;
     }
 }

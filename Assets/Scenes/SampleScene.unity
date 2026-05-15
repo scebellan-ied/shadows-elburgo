@@ -328,13 +328,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410087039}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.6626202, z: -0, w: -0.74895567}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.32, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 277, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &410087042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,7 +399,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f39f02dc443939942b86cc8b8249e1ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  filePath: C:/Users/scebellan/Documents/unity_projects - backup/Shadows-backup/Assets/positions.csv
+  filePath: Assets/positions.csv
+  nrel: 0
 --- !u!4 &430522365
 Transform:
   m_ObjectHideFlags: 0
@@ -663,12 +664,12 @@ MonoBehaviour:
   _ellipsoidOverride: {fileID: 0}
   _originPlacement: 1
   _originAuthority: 0
-  _latitude: 37.00852
-  _longitude: -2.130267
-  _height: 476.9999999990602
-  _ecefX: 5096280.442857182
-  _ecefY: -189567.94778112238
-  _ecefZ: 3818435.374435094
+  _latitude: 41.57503
+  _longitude: -0.7974028
+  _height: 305.1059875488281
+  _ecefX: 4778217.728156419
+  _ecefY: -66504.20407073804
+  _ecefZ: 4210612.273909886
   _scale: 1
 --- !u!4 &866620634
 Transform:
@@ -864,7 +865,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 233, y: -98}
+  m_AnchoredPosition: {x: 144.4, y: -51.7}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1263464263
@@ -914,8 +915,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1007,9 +1008,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a7e56cc12782fa186b8cbca82f45fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 38636884457507609, guid: b93124df6bec28745ab30e2b625ed85c, type: 3}
+  panel: {fileID: 38636884457507609, guid: d855a37e4d4aad24894cb6829429ecdc, type: 3}
   lightSource: {fileID: 410087039}
-  jsonPath: C:/Users/scebellan/Documents/unity_projects - backup/Shadows-backup/Assets/panelLocations.json
+  jsonPath: panelLocations.json
 --- !u!4 &1390980382
 Transform:
   m_ObjectHideFlags: 0
@@ -1168,7 +1169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 2
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
